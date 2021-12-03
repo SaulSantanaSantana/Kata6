@@ -4,6 +4,7 @@ package kata6;
 import java.util.ArrayList;
 import java.util.Scanner;
 import toys.Car;
+import toys.Helicopter;
 import toys.SerialNumberGenerator;
 /**
  *
@@ -16,22 +17,41 @@ public class Kata6 {
      */
     public static void main(String[] args) {
         
-        ArrayList<Car> juguetes = new ArrayList();
+        ArrayList<Car> juguetesC = new ArrayList();
+        ArrayList<Helicopter> juguetesH = new ArrayList();
         Scanner console =new Scanner(System.in);
         
         SerialNumberGenerator serialNum = new SerialNumberGenerator();
         
         System.out.println("Bienvenido al sistema de gestión de juguetería");
-        System.out.println("Pulse intro para generar jugutes o teclee salir para terminar");
+        //System.out.println("Pulse intro para generar jugutes o teclee salir para terminar");
+        System.out.println("Comandos: car, helicopter, salir.");
+        System.out.println("");
         
-        while(!console.nextLine().equals("salir")){
+        String code = console.nextLine();
+        
+        while(!code.equals("salir")){
             
-            Car car = new Car(serialNum.next());
-            car.label(); car.pack();
+            if(code.equals("car")){
+                
+                Car car = new Car(serialNum.next(), "red");
+                car.label(); car.pack();
             
-            juguetes.add(car);
+                juguetesC.add(car);
+                
+            }else if(code.equals("helicopter")){
+                
+                Helicopter helicopter = new Helicopter(serialNum.next(), "blue");
+                helicopter.label(); helicopter.pack();
             
-            System.out.println(juguetes);
+                juguetesH.add(helicopter);
+            }
+            
+            
+            System.out.print("Cars: ");System.out.print(juguetesC);
+            System.out.print(" Heicopters: ");System.out.println(juguetesH);
+            
+            code = console.nextLine();
             
         }
         
