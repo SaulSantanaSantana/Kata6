@@ -17,7 +17,7 @@ public class Car {
     }
 
     public void label(){
-        System.out.print("Estiquetando: "+ serialNumber + "  ");
+        System.out.println("Estiquetando: "+ serialNumber + "  ");
     }
 
     @Override
