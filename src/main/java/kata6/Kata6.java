@@ -1,12 +1,12 @@
 package kata6;
 
 
+import branches.AmericanToyBusiness;
+import branches.AsianToyBusiness;
+
 import java.util.ArrayList;
 import java.util.Scanner;
-import toys.Models.Car;
-import toys.Models.Helicopter;
 import toys.Toy;
-import toys.ToyBuisness;
 /**
  *
  * @author saul
@@ -18,31 +18,54 @@ public class Kata6 {
      */
     public static void main(String[] args) {
         
-        ToyBuisness generator = new ToyBuisness();
-        
         ArrayList<Toy> juguetes = new ArrayList();
         Scanner console =new Scanner(System.in);
         
         System.out.println("Bienvenido al sistema de gestión de juguetería");
         //System.out.println("Pulse intro para generar jugutes o teclee salir para terminar");
+        
         System.out.println("Comandos: car, helicopter, salir.");
         System.out.println("");
         
         String code;
         
         while(!"salir".equals(code=console.nextLine())){
+            System.out.print("Seleccione marca: asian o american");
             
-            Toy newToy = generator.createToy(code);
+            
+            Scanner scn =new Scanner(System.in);
             System.out.println();
+            String branch = scn.nextLine();
             
-            if(newToy != null){
-                juguetes.add(newToy);
-                System.out.print("Juguetes: ");System.out.print(juguetes);
-                System.out.println();
-                System.out.println();
+            switch(branch){
+                case "american":
+                    AmericanToyBusiness generator = new AmericanToyBusiness();
+                    Toy newToy = generator.createToy(code);
+                    System.out.println();
+            
+                    if(newToy != null){
+                        juguetes.add(newToy);
+
+                    }
+                    break;
+                    
+                case "asian":
+                    AsianToyBusiness generator0 = new AsianToyBusiness();
+                    Toy newToy0 = generator0.createToy(code);
+                                       System.out.println();
+            
+                    if(newToy0 != null){
+                        juguetes.add(newToy0);
+                    }
+                    
+                    break;
             }
             
-
+            
+            System.out.print("Juguetes: ");System.out.print(juguetes);
+            System.out.println();
+            System.out.println();
+            
         }
         
         System.out.println("");
