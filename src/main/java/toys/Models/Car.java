@@ -1,10 +1,12 @@
-package toys;
+package toys.Models;
+
+import toys.Toy;
 
 /**
  *
  * @author saul
  */
-public class Car {
+public class Car implements Toy{
     
     private final int serialNumber;
     private final String typer;
@@ -17,11 +19,13 @@ public class Car {
     public String getTyper() {
         return typer;
     }
-
+    
+    @Override
     public void pack(){
-        System.out.println("Empaquetando: "+ serialNumber+"  " );
+        System.out.print("Empaquetando: "+ serialNumber+"  " );
     }
 
+    @Override
     public void label(){
         System.out.print("Estiquetando: "+ serialNumber + "  ");
     }

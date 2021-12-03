@@ -3,9 +3,9 @@ package kata6;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import toys.Car;
-import toys.Helicopter;
-import toys.SerialNumberGenerator;
+import toys.Models.Car;
+import toys.Models.Helicopter;
+import toys.Toy;
 import toys.ToyBuisness;
 /**
  *
@@ -20,8 +20,7 @@ public class Kata6 {
         
         ToyBuisness generator = new ToyBuisness();
         
-        ArrayList<Car> juguetesC = new ArrayList();
-        ArrayList<Helicopter> juguetesH = new ArrayList();
+        ArrayList<Toy> juguetes = new ArrayList();
         Scanner console =new Scanner(System.in);
         
         System.out.println("Bienvenido al sistema de gestión de juguetería");
@@ -29,26 +28,21 @@ public class Kata6 {
         System.out.println("Comandos: car, helicopter, salir.");
         System.out.println("");
         
-        String code = console.nextLine();
+        String code;
         
-        while(!code.equals("salir")){
+        while(!"salir".equals(code=console.nextLine())){
             
-            if(code.equals("car")){
-                
-                Car car= generator.createCar();
-                juguetesC.add(car);
-                
-            }else if(code.equals("helicopter")){
-                
-            Helicopter helicopter = generator.helicopter();
-                juguetesH.add(helicopter);
+            Toy newToy = generator.createToy(code);
+            System.out.println();
+            
+            if(newToy != null){
+                juguetes.add(newToy);
+                System.out.print("Juguetes: ");System.out.print(juguetes);
+                System.out.println();
+                System.out.println();
             }
             
-            System.out.print("Cars: ");System.out.print(juguetesC);
-            System.out.print(" Heicopters: ");System.out.println(juguetesH);
-            
-            code = console.nextLine();
-            
+
         }
         
         System.out.println("");

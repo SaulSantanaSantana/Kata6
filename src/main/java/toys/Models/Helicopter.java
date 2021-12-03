@@ -1,11 +1,13 @@
 
-package toys;
+package toys.Models;
+
+import toys.Toy;
 
 /**
  *
  * @author saul
  */
-public class Helicopter {
+public class Helicopter implements Toy{
     
     private final int serialNumber;
     private final String type;
@@ -19,10 +21,12 @@ public class Helicopter {
         return type;
     }
     
+    @Override
     public void pack(){
-        System.out.println("Empaquetando: "+ serialNumber+"  " );
+        System.out.print("Empaquetando: "+ serialNumber+"  " );
     }
-
+    
+    @Override
     public void label(){
         System.out.print("Estiquetando: "+ serialNumber + "  ");
     }

@@ -1,5 +1,8 @@
 package toys;
 
+import toys.Models.Helicopter;
+import toys.Models.Car;
+
 /**
  *
  * @author saul
@@ -11,15 +14,27 @@ public class ToyBuisness {
     public ToyBuisness(){
     }
     
-    public Car createCar(){
-        Car car = new Car(serialNum.next(), "red");
-        car.label(); car.pack();
-        return car;
-    }
-    
-    public Helicopter helicopter(){
-        Helicopter helicopter = new Helicopter(serialNum.next(), "blue");
-        helicopter.label(); helicopter.pack();
-        return helicopter;
+    public Toy createToy(String argument){
+        
+        switch(argument){
+            case "car" -> {
+                Car car = new Car(serialNum.next(),"");
+                car.pack(); 
+                car.label();
+                return car;
+            }
+  
+                
+            case "helicopter" -> {
+                Helicopter helicopter = new Helicopter(serialNum.next(),"");
+                helicopter.pack();
+                helicopter.label();
+                return helicopter;
+            }
+                
+            default -> System.out.println("Comando desconocido");
+        }
+        
+        return null;
     }
 }
