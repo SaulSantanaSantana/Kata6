@@ -1,23 +1,24 @@
+
 package toys;
 
 /**
  *
  * @author saul
  */
-public class Car {
+public class Helicopter {
     
     private final int serialNumber;
-    private final String typer;
+    private final String type;
 
-    public Car(int serialNumber, String typer) {
+    public Helicopter(int serialNumber, String type) {
         this.serialNumber = serialNumber;
-        this.typer = typer;
+        this.type = type;
     }
 
-    public String getTyper() {
-        return typer;
+    public String getType() {
+        return type;
     }
-
+    
     public void pack(){
         System.out.println("Empaquetando: "+ serialNumber+"  " );
     }
@@ -28,9 +29,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" + serialNumber + '}';
+        return "Helicopte{" + serialNumber + '}';
     }
-    
-    
     
 }
