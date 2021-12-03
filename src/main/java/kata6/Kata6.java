@@ -6,6 +6,7 @@ import java.util.Scanner;
 import toys.Car;
 import toys.Helicopter;
 import toys.SerialNumberGenerator;
+import toys.ToyBuisness;
 /**
  *
  * @author saul
@@ -17,11 +18,11 @@ public class Kata6 {
      */
     public static void main(String[] args) {
         
+        ToyBuisness generator = new ToyBuisness();
+        
         ArrayList<Car> juguetesC = new ArrayList();
         ArrayList<Helicopter> juguetesH = new ArrayList();
         Scanner console =new Scanner(System.in);
-        
-        SerialNumberGenerator serialNum = new SerialNumberGenerator();
         
         System.out.println("Bienvenido al sistema de gestión de juguetería");
         //System.out.println("Pulse intro para generar jugutes o teclee salir para terminar");
@@ -34,19 +35,14 @@ public class Kata6 {
             
             if(code.equals("car")){
                 
-                Car car = new Car(serialNum.next(), "red");
-                car.label(); car.pack();
-            
+                Car car= generator.createCar();
                 juguetesC.add(car);
                 
             }else if(code.equals("helicopter")){
                 
-                Helicopter helicopter = new Helicopter(serialNum.next(), "blue");
-                helicopter.label(); helicopter.pack();
-            
+            Helicopter helicopter = generator.helicopter();
                 juguetesH.add(helicopter);
             }
-            
             
             System.out.print("Cars: ");System.out.print(juguetesC);
             System.out.print(" Heicopters: ");System.out.println(juguetesH);
