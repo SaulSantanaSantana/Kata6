@@ -13,11 +13,11 @@ public class Car {
     }
     
     public void pack(){
-        System.out.print("Empaquetando: "+ serialNumber+"  " );
+        System.out.println("Empaquetando: "+ serialNumber+"  " );
     }
 
     public void label(){
-        System.out.println("Estiquetando: "+ serialNumber + "  ");
+        System.out.print("Estiquetando: "+ serialNumber + "  ");
     }
 
     @Override
