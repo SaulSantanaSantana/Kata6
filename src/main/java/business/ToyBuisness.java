@@ -1,17 +1,22 @@
 package business;
 
+import factories.ToyFactory;
 import toys.Toy;
 
 /**
  *
  * @author saul
  */
-public abstract class ToyBuisness {
+public class ToyBuisness {
     
-    public SerialNumberGenerator serialNum = new SerialNumberGenerator();
+    private final ToyFactory toyfactory;
     
-    public ToyBuisness(){
+    public ToyBuisness(ToyFactory toyfactory) {
+        this.toyfactory = toyfactory;
     }
     
-    public abstract Toy createToy(String argument);
+    public Toy produceToy(String type){
+        return this.toyfactory.produceToy(type);
+    }
+
 }

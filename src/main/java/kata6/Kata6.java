@@ -1,11 +1,12 @@
 package kata6;
 
 
-import branches.AmericanToyBusiness;
-import branches.AsianToyBusiness;
-
+import business.ToyBuisness;
+import factories.regionalfactories.AmericanToyFactory;
+import factories.regionalfactories.AsianToyFactory;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import toys.Toy;
 /**
  *
@@ -17,59 +18,38 @@ public class Kata6 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        ArrayList<Toy> juguetes = new ArrayList();
-        Scanner console =new Scanner(System.in);
-        
-        System.out.println("Bienvenido al sistema de gestión de juguetería");
-        //System.out.println("Pulse intro para generar jugutes o teclee salir para terminar");
-        
-        System.out.println("Comandos: car, helicopter, salir.");
-        System.out.println("");
-        
-        String code;
-        
-        while(!"salir".equals(code=console.nextLine())){
-            System.out.print("Seleccione marca: asian o american");
-            
-            
-            Scanner scn =new Scanner(System.in);
-            System.out.println();
-            String branch = scn.nextLine();
-            
-            switch(branch){
-                case "american":
-                    AmericanToyBusiness generator = new AmericanToyBusiness();
-                    Toy newToy = generator.createToy(code);
-                    System.out.println();
-            
-                    if(newToy != null){
-                        juguetes.add(newToy);
 
-                    }
-                    break;
-                    
-                case "asian":
-                    AsianToyBusiness generator0 = new AsianToyBusiness();
-                    Toy newToy0 = generator0.createToy(code);
-                                       System.out.println();
+            ToyBuisness business = new ToyBuisness(new AsianToyFactory());
+            ArrayList<Toy> toys = new ArrayList<>();
             
-                    if(newToy0 != null){
-                        juguetes.add(newToy0);
-                    }
-                    
-                    break;
+            
+            Scanner in = new Scanner(System.in);
+            String line = "";
+            while(!line.equals("exit")){
+                line = in.nextLine();
+                
+                switch(line){
+                    case "car":
+                    case "helicopter":
+                        toys.add(business.produceToy(line));
+                        System.out.println(
+                                "Built toys: "+toys.stream()
+                                .map(c -> c.toString())
+                                .collect(Collectors.joining(", ")));
+                     
+                        break;
+                        
+                    case "exit":
+                        System.out.println("Exiting program");
+                        break;
+                        
+                    default:
+                        System.out.println("Error");
+                        break;
+                
+                }
+            
             }
-            
-            
-            System.out.print("Juguetes: ");System.out.print(juguetes);
-            System.out.println();
-            System.out.println();
-            
-        }
-        
-        System.out.println("");
-        System.out.println("PROGRAMA FINALIZADO");
         
     }
     

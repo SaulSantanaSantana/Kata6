@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package branches;
+package factories.regionalfactories;
 
-import business.ToyBuisness;
+import factories.ToyFactory;
 import toys.Models.AmericanCarToy;
 import toys.Models.AmericanHelicopterToy;
 import toys.Toy;
@@ -14,23 +14,19 @@ import toys.Toy;
  *
  * @author saul
  */
-public class AmericanToyBusiness extends ToyBuisness {
+public class AmericanToyFactory extends ToyFactory {
 
     @Override
     public Toy createToy(String argument) {
         switch(argument){
             case "car" -> {
-                AmericanCarToy car = new AmericanCarToy(serialNum.next(),"");
-                car.pack(); 
-                car.label();
+                AmericanCarToy car = new AmericanCarToy(serialNumberGenerator.next(),"");
                 return car;
             }
   
                 
             case "helicopter" -> {
-                AmericanHelicopterToy helicopter = new AmericanHelicopterToy(serialNum.next(),"");
-                helicopter.pack();
-                helicopter.label();
+                AmericanHelicopterToy helicopter = new AmericanHelicopterToy(serialNumberGenerator.next(),"");
                 return helicopter;
             }
                 
@@ -39,5 +35,5 @@ public class AmericanToyBusiness extends ToyBuisness {
         
         return null;
     }
-    
 }
+    

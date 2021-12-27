@@ -9,15 +9,15 @@ import toys.Toy;
 public class Car implements Toy{
     
     private final int serialNumber;
-    private final String typer;
+    private final String type;
 
-    public Car(int serialNumber, String typer) {
+    public Car(int serialNumber, String type) {
         this.serialNumber = serialNumber;
-        this.typer = typer;
+        this.type = type;
     }
 
-    public String getTyper() {
-        return typer;
+    public String getType() {
+        return type;
     }
     
     @Override

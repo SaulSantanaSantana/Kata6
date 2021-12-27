@@ -10,15 +10,15 @@ import toys.Toy;
 public class AmericanCarToy implements Toy{
     
     private final int serialNumber;
-    private final String typer;
+    private final String type;
 
-    public AmericanCarToy(int serialNumber, String typer) {
+    public AmericanCarToy(int serialNumber, String type) {
         this.serialNumber = serialNumber;
-        this.typer = typer;
+        this.type = type;
     }
 
-    public String getTyper() {
-        return typer;
+    public String gettype() {
+        return type;
     }
     
     @Override
