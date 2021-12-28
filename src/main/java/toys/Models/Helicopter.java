@@ -36,4 +36,7 @@ public class Helicopter implements Toy{
         return "Helicopte{" + serialNumber + '}';
     }
     
+    @Override
+    public void prepare() {
+    }
 }

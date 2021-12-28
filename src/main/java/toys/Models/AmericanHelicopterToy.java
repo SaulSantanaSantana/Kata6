@@ -1,5 +1,9 @@
 package toys.Models;
 
+import componentfactories.ComponentFactory;
+import componentfactories.regionalcomponentfactories.AmericanComponentFactory;
+import components.Engine;
+import components.RotorBlade;
 import toys.Toy;
 
 /**
@@ -10,10 +14,17 @@ public class AmericanHelicopterToy implements Toy{
     
     private final int serialNumber;
     private final String type;
+    
+    private final ComponentFactory factory;
+    
+    private Engine engine;
+    private RotorBlade rotorBlade;
 
     public AmericanHelicopterToy(int serialNumber, String type) {
         this.serialNumber = serialNumber;
         this.type = type;
+        
+        this.factory = new AmericanComponentFactory();
     }
 
     public String getTyper() {
@@ -34,5 +45,13 @@ public class AmericanHelicopterToy implements Toy{
     public String toString() {
         return "AmericanHelicopterToy{" + serialNumber + '}';
     }
+
+    @Override
+    public void prepare() {
+        engine = factory.createEngine();
+        rotorBlade = factory.createRotorBlade();
+    }
+    
+    
     
 }

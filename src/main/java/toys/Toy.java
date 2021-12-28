@@ -10,4 +10,6 @@ public interface Toy {
     
     public void label();
     
+    public void prepare();
+    
 }

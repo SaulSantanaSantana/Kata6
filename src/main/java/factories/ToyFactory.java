@@ -10,9 +10,10 @@ import toys.Toy;
 public abstract class ToyFactory {
     
     
-    public Toy produceToy(Integer serialNumber){
+    public Toy produceToy(){
     
-        Toy toy = this.createToy(serialNumber);
+        Toy toy = this.createToy(SerialNumberGenerator.getInstance().next());
+        toy.prepare();
         toy.pack();
         toy.label();
         return toy;

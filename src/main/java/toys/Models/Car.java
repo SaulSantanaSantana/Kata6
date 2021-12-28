@@ -34,7 +34,9 @@ public class Car implements Toy{
     public String toString() {
         return "Car{" + serialNumber + '}';
     }
-    
-    
+
+    @Override
+    public void prepare() {
+    }
     
 }
